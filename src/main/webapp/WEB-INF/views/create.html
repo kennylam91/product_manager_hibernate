@@ -6,15 +6,15 @@
 </head>
 <body>
 <h1>Create New Product:</h1>
-<form>
+<form th:object="${product}" th:action="@{/product/save}" method="post">
     <table>
         <tr>
             <td>Name</td>
-            <td><input/></td>
+            <td><input th:field="*{name}"/></td>
         </tr>
         <tr>
             <td>Price</td>
-            <td><input/></td>
+            <td><input th:field="*{price}"/></td>
         </tr>
     </table>
     <input type="submit" value="Save">
