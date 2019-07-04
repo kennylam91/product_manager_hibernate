@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/product")
 public class ProductController {
@@ -27,6 +29,14 @@ public class ProductController {
     public ModelAndView createNewProduct(@ModelAttribute Product product) {
         productService.save(product);
         ModelAndView modelAndView = new ModelAndView("create");
+        return modelAndView;
+    }
+
+    @GetMapping
+    public ModelAndView showList(){
+        List<Product> productList= productService.findAll();
+        ModelAndView modelAndView= new ModelAndView("list");
+        modelAndView.addObject("productList",productList);
         return modelAndView;
     }
 }

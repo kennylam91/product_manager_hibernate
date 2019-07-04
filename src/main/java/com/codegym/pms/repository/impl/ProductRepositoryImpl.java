@@ -5,10 +5,18 @@ import com.codegym.pms.repository.ProductRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 @Transactional
 public class ProductRepositoryImpl implements ProductRepository {
+    @Override
+    public List<Product> findAll() {
+        TypedQuery<Product> query=em.createQuery("select p from Product p",Product.class);
+        return query.getResultList();
+    }
 
     @PersistenceContext
     private EntityManager em;

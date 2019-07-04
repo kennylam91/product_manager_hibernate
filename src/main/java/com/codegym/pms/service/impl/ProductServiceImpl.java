@@ -6,6 +6,8 @@ import com.codegym.pms.repository.impl.ProductRepositoryImpl;
 import com.codegym.pms.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
@@ -15,5 +17,10 @@ public class ProductServiceImpl implements ProductService {
     public void save(Product product) {
         productRepository.save(product);
 
+    }
+
+    @Override
+    public List<Product> findAll() {
+        return productRepository.findAll();
     }
 }
