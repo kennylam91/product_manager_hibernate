@@ -4,10 +4,7 @@ import com.codegym.pms.model.Product;
 import com.codegym.pms.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -37,6 +34,12 @@ public class ProductController {
         List<Product> productList= productService.findAll();
         ModelAndView modelAndView= new ModelAndView("list");
         modelAndView.addObject("productList",productList);
+        return modelAndView;
+    }
+
+    @GetMapping("/view/{id}")
+    public ModelAndView showDetail(@PathVariable Long id){
+        ModelAndView modelAndView= new ModelAndView("view");
         return modelAndView;
     }
 }
