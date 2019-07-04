@@ -5,7 +5,8 @@
     <title>Create</title>
 </head>
 <body>
-<h1>Create New Product:</h1>
+<h3><a th:href="@{/product}">Product list</a></h3>
+<h2>Create New Product:</h2>
 <form th:object="${product}" th:action="@{/product/save}" method="post">
     <table>
         <tr>
