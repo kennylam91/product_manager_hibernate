@@ -14,7 +14,7 @@ import java.util.List;
 public class ProductRepositoryImpl implements ProductRepository {
     @Override
     public List<Product> findAll() {
-        TypedQuery<Product> query=em.createQuery("select p from Product p",Product.class);
+        TypedQuery<Product> query = em.createQuery("select p from Product p", Product.class);
         return query.getResultList();
     }
 
@@ -28,6 +28,12 @@ public class ProductRepositoryImpl implements ProductRepository {
         } else {
             em.persist(product);
         }
+    }
 
+    @Override
+    public Product findById(Long id) {
+        TypedQuery<Product> query = em.createQuery("select p from Product p where p.id=:id",Product.class);
+        query.setParameter("id",id);
+        return query.getSingleResult();
     }
 }

@@ -30,16 +30,18 @@ public class ProductController {
     }
 
     @GetMapping
-    public ModelAndView showList(){
-        List<Product> productList= productService.findAll();
-        ModelAndView modelAndView= new ModelAndView("list");
-        modelAndView.addObject("productList",productList);
+    public ModelAndView showList() {
+        List<Product> productList = productService.findAll();
+        ModelAndView modelAndView = new ModelAndView("list");
+        modelAndView.addObject("productList", productList);
         return modelAndView;
     }
 
     @GetMapping("/view/{id}")
-    public ModelAndView showDetail(@PathVariable Long id){
-        ModelAndView modelAndView= new ModelAndView("view");
+    public ModelAndView showDetail(@PathVariable Long id) {
+        Product product = productService.findById(id);
+        ModelAndView modelAndView = new ModelAndView("view");
+        modelAndView.addObject("product",product);
         return modelAndView;
     }
 }

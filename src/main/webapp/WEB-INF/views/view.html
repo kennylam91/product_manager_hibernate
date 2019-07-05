@@ -5,7 +5,20 @@
     <title>Product View</title>
 </head>
 <body>
+<h3><a th:href="@{/product}">Product list</a></h3>
 <h3>Product Detail:</h3>
+<form th:object="${product}">
+    <table>
+        <tr>
+            <td>Name</td>
+            <td><input type="text" th:value="${product.name}"></td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td><input type="text" th:value="${product.price}"></td>
+        </tr>
+    </table>
+</form>
 
 </body>
 </html>
