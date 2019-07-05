@@ -9,6 +9,7 @@
 <h3>Edit Product:</h3>
 <form th:object="${product}" th:action="@{/product/update}" method="post">
     <table>
+        <input type="hidden" th:value="${product.id}" th:field="*{id}">
         <tr>
             <td>Name</td>
             <td><input type="text" th:value="${product.name}" th:field="*{name}"></td>
@@ -16,7 +17,10 @@
         <tr>
             <td>Price</td>
             <td><input type="text" th:value="${product.price}" th:field="*{price}"></td>
-            <input type="hidden" th:value="${product.id}" th:field="*{id}">
+        </tr>
+        <tr>
+            <td>Category</td>
+            <td><input type="text" th:value="${product.category}" th:field="*{category}"></td>
         </tr>
         <tr>
             <td><input type="submit" value="Save"></td>
