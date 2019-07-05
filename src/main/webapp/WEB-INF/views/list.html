@@ -12,14 +12,14 @@
         <td>Name</td>
         <td>Price</td>
         <td>Edit</td>
-
+        <td>Delete</td>
         <td>View</td>
     </thead>
     <tr th:each="product:${productList}">
         <td th:text="${product.name}"></td>
         <td th:text="${product.price}"></td>
         <td><a th:href="@{/product/edit/__${product.id}__}">Edit</a></td>
-
+        <td><a th:href="@{/product/delete/__${product.id}__}">Delete</a></td>
         <td><a th:href="@{/product/view/__${product.id}__}">View</a></td>
     </tr>
 </table>
