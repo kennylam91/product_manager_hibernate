@@ -4,8 +4,10 @@ import com.codegym.pms.model.Product;
 import com.codegym.pms.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -44,10 +46,19 @@ public class ProductController {
         modelAndView.addObject("product", product);
         return modelAndView;
     }
+
     @GetMapping("/edit/{id}")
-    public ModelAndView showEditForm(@PathVariable Long id){
+    public ModelAndView showEditForm(@PathVariable Long id) {
         ModelAndView modelAndView = new ModelAndView("edit");
+        Product product = productService.findById(id);
+        modelAndView.addObject("product", product);
         return modelAndView;
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute Product product, RedirectAttributes redirectAttributes){
+        productService.save(product);
+        return "redirect:/product";
     }
 
 }
