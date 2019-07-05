@@ -28,4 +28,9 @@ public class ProductServiceImpl implements ProductService {
     public Product findById(Long id) {
         return productRepository.findById(id);
     }
+
+    @Override
+    public void remove(Long id) {
+        productRepository.remove(id);
+    }
 }

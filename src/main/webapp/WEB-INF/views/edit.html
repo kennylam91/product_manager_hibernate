@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Edit Product</title>
 </head>
+<body>
 <h3><a th:href="@{/product}">Product list</a></h3>
 <h3>Edit Product:</h3>
 <form th:object="${product}" th:action="@{/product/update}" method="post">
@@ -22,5 +23,5 @@
         </tr>
     </table>
 </form>
-
+</body>
 </html>

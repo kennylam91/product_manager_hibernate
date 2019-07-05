@@ -12,4 +12,6 @@ public interface Repository <T>{
 
      T findById(Long id);
 
+     void remove(Long id);
+
 }

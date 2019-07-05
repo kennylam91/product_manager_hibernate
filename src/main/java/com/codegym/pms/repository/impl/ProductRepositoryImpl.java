@@ -31,9 +31,17 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
+    public void remove(Long id) {
+        Product product = findById(id);
+        if (product != null) {
+            em.remove(product);
+        }
+    }
+
+    @Override
     public Product findById(Long id) {
-        TypedQuery<Product> query = em.createQuery("select p from Product p where p.id=:id",Product.class);
-        query.setParameter("id",id);
+        TypedQuery<Product> query = em.createQuery("select p from Product p where p.id=:id", Product.class);
+        query.setParameter("id", id);
         return query.getSingleResult();
     }
 }

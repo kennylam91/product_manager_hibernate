@@ -10,4 +10,6 @@ public interface ProductService {
     List<Product> findAll();
 
     Product findById(Long id);
+
+    void remove(Long id);
 }
