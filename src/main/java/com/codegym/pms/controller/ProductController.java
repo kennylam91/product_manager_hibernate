@@ -61,4 +61,11 @@ public class ProductController {
         return "redirect:/product";
     }
 
+    @GetMapping("/delete/{id}")
+    public ModelAndView showDeleteForm(@PathVariable Long id){
+        ModelAndView modelAndView = new ModelAndView("delete");
+
+        return modelAndView;
+    }
+
 }
