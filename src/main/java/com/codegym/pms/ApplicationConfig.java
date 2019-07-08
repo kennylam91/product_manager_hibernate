@@ -1,7 +1,11 @@
 package com.codegym.pms;
 
+import com.codegym.pms.formatter.CategoryFormatter;
+import com.codegym.pms.model.Category;
 import com.codegym.pms.repository.ProductRepository;
+import com.codegym.pms.service.CategoryService;
 import com.codegym.pms.service.ProductService;
+import com.codegym.pms.service.impl.CategoryServiceImpl;
 import com.codegym.pms.service.impl.ProductServiceImpl;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,6 +15,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -52,6 +57,17 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
         return new ProductServiceImpl();
     }
 
+    @Bean
+    public CategoryService categoryService(){
+        return new CategoryServiceImpl();
+    }
+
+    //Register formatter
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addFormatter(new CategoryFormatter());
+    }
 
     //Thymeleaf Configuration
     @Bean

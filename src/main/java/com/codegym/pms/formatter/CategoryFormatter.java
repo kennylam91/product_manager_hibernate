@@ -11,6 +11,11 @@ import java.util.Locale;
 
 @Component
 public class CategoryFormatter implements Formatter<Category> {
+
+    public CategoryFormatter() {
+    }
+
+
     @Autowired
     CategoryService categoryService;
 

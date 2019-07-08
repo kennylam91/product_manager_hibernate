@@ -19,7 +19,7 @@
     <tr th:each="product:${productList}">
         <td th:text="${product.name}"></td>
         <td th:text="${product.price}"></td>
-        <td th:text="${product.category}"></td>
+        <td th:text="${product.category.name}"></td>
         <td><a th:href="@{/product/edit/__${product.id}__}">Edit</a></td>
         <td><a th:href="@{/product/delete/__${product.id}__}">Delete</a></td>
         <td><a th:href="@{/product/view/__${product.id}__}">View</a></td>
