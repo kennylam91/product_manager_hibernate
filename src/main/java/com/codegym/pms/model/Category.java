@@ -12,12 +12,16 @@ public class Category {
     private Long id;
     private String name;
 
+    @OneToMany(targetEntity = Product.class)
+    private List<Product> products;
+
 
     public Category() {
     }
 
-    public Category(String name) {
+    public Category(String name, List<Product> products) {
         this.name = name;
+        this.products = products;
     }
 
     public Long getId() {
@@ -36,4 +40,11 @@ public class Category {
         this.name = name;
     }
 
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
 }
