@@ -5,6 +5,7 @@ import com.codegym.pms.model.Product;
 import com.codegym.pms.service.CategoryService;
 import com.codegym.pms.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class ProductController {
     CategoryService categoryService;
 
     @GetMapping("/create")
-    public ModelAndView getCreateForm() {
+    public ModelAndView getCreateForm(Pageable pageable) {
         ModelAndView modelAndView = new ModelAndView("create");
         modelAndView.addObject("product", new Product());
         modelAndView.addObject("categories",categoryService.findAll());
@@ -38,8 +39,8 @@ public class ProductController {
     }
 
     @GetMapping
-    public ModelAndView showList() {
-        Iterable<Product> productList = productService.findAll();
+    public ModelAndView showList(Pageable pageable) {
+        Iterable<Product> productList = productService.findAll(pageable);
         ModelAndView modelAndView = new ModelAndView("list");
         modelAndView.addObject("productList", productList);
         return modelAndView;
