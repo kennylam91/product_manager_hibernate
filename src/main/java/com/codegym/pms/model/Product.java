@@ -13,7 +13,16 @@ public class Product {
 
     private String name;
     private long price;
-    private String category;
+    private Category category;
+
+    public Product() {
+    }
+
+    public Product(String name, long price, Category category) {
+        this.name = name;
+        this.price = price;
+        this.category = category;
+    }
 
     public Long getId() {
         return id;
@@ -23,17 +32,13 @@ public class Product {
         this.id = id;
     }
 
-    public Product(String name, long price, String category) {
-        this.name = name;
-        this.price = price;
-        this.category= category;
+    public Category getCategory() {
+        return category;
     }
 
-
-    public Product() {
+    public void setCategory(Category category) {
+        this.category = category;
     }
-
-
 
     public String getName() {
         return name;
@@ -51,11 +56,5 @@ public class Product {
         this.price = price;
     }
 
-    public String getCategory() {
-        return category;
-    }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
 }
