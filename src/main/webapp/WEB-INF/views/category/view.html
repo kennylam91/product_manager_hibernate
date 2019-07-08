@@ -13,14 +13,16 @@
     </div>
     <div>
         <label>Products</label>
-        <table>
+        <table border="1">
             <tr>
-                <td>ID</td>
+                <td>No</td>
                 <td>Name</td>
+                <td>Price</td>
             </tr>
             <tr th:each="pro:${products}">
-                <td th:text="${pro.id}"></td>
+                <td th:text="${proStat.count}"></td>
                 <td th:text="${pro.name}"></td>
+                <td th:text="${pro.price}"></td>
             </tr>
         </table>
     </div>

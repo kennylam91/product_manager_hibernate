@@ -31,10 +31,10 @@ public class ProductController {
     }
 
     @PostMapping("/save")
-    public ModelAndView createNewProduct(@ModelAttribute Product product) {
+    public String createNewProduct(@ModelAttribute Product product, RedirectAttributes redirectAttributes) {
         productService.save(product);
         ModelAndView modelAndView = new ModelAndView("create");
-        return modelAndView;
+        return "redirect:/product";
     }
 
     @GetMapping
