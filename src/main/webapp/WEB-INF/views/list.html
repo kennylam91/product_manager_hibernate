@@ -10,24 +10,30 @@
 <h2>Product List</h2>
 <table border="2">
     <thead>
-        <td>No</td>
-        <td>Name</td>
-        <td>Price</td>
-        <td>Category</td>
-        <td>Edit</td>
-        <td>Delete</td>
-        <td>View</td>
+    <td>No</td>
+    <td>Name</td>
+    <td>Price</td>
+    <td>Category</td>
+    <td>Edit</td>
+    <td>Delete</td>
+    <td>View</td>
     </thead>
     <tr th:each="product:${productList}">
         <td th:text="${productStat.count}"></td>
         <td th:text="${product.name}"></td>
         <td th:text="${product.price}"></td>
-        <td ><a th:href="@{/category/view(id=${product.category.id})}" th:text="${product.category.name}"></a></td>
+        <td><a th:href="@{/category/view(id=${product.category.id})}" th:text="${product.category.name}"></a></td>
         <td><a th:href="@{/product/edit/__${product.id}__}">Edit</a></td>
         <td><a th:href="@{/product/delete/__${product.id}__}">Delete</a></td>
         <td><a th:href="@{/product/view/__${product.id}__}">View</a></td>
     </tr>
 </table>
 
+<div>
+    <a th:href="@{'/product'(page=${productList.number - 1},size=5)}" th:if="${productList.hasPrevious()}">Previous</a>
+    <span th:text="${productList.number + 1}"></span>/
+    <span th:text="${productList.totalPages}"></span>
+    <a th:href="@{'/product'(page=${productList.number + 1},size=5)}" th:if="${productList.hasNext()}">Next</a>
+</div>
 </body>
 </html>

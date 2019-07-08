@@ -5,6 +5,7 @@ import com.codegym.pms.model.Product;
 import com.codegym.pms.service.CategoryService;
 import com.codegym.pms.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,7 +41,7 @@ public class ProductController {
 
     @GetMapping
     public ModelAndView showList(Pageable pageable) {
-        Iterable<Product> productList = productService.findAll(pageable);
+        Page<Product> productList = productService.findAll(pageable);
         ModelAndView modelAndView = new ModelAndView("list");
         modelAndView.addObject("productList", productList);
         return modelAndView;
