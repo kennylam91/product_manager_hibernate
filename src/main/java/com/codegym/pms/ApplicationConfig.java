@@ -1,7 +1,6 @@
 package com.codegym.pms;
 
 import com.codegym.pms.repository.ProductRepository;
-import com.codegym.pms.repository.impl.ProductRepositoryImpl;
 import com.codegym.pms.service.ProductService;
 import com.codegym.pms.service.impl.ProductServiceImpl;
 import org.springframework.beans.BeansException;
