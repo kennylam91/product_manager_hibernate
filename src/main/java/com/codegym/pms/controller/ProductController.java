@@ -1,6 +1,8 @@
 package com.codegym.pms.controller;
 
+import com.codegym.pms.model.Category;
 import com.codegym.pms.model.Product;
+import com.codegym.pms.service.CategoryService;
 import com.codegym.pms.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,9 @@ import java.util.List;
 public class ProductController {
     @Autowired
     ProductService productService;
+
+    @Autowired
+    CategoryService categoryService;
 
     @GetMapping("/create")
     public ModelAndView getCreateForm() {
@@ -52,17 +57,18 @@ public class ProductController {
         ModelAndView modelAndView = new ModelAndView("edit");
         Product product = productService.findById(id);
         modelAndView.addObject("product", product);
+        modelAndView.addObject("categories", categoryService.findAll());
         return modelAndView;
     }
 
     @PostMapping("/update")
-    public String update(@ModelAttribute Product product, RedirectAttributes redirectAttributes){
+    public String update(@ModelAttribute Product product, RedirectAttributes redirectAttributes) {
         productService.save(product);
         return "redirect:/product";
     }
 
     @GetMapping("/delete/{id}")
-    public ModelAndView showDeleteForm(@PathVariable Long id){
+    public ModelAndView showDeleteForm(@PathVariable Long id) {
         ModelAndView modelAndView = new ModelAndView("delete");
         Product product = productService.findById(id);
         modelAndView.addObject("product", product);
@@ -70,9 +76,14 @@ public class ProductController {
     }
 
     @PostMapping("/delete")
-    public String delete(@RequestParam Long id, RedirectAttributes redirectAttributes){
+    public String delete(@RequestParam Long id, RedirectAttributes redirectAttributes) {
         productService.remove(id);
         return "redirect:/product";
     }
+
+//    @ModelAttribute
+//    public void addCategories(Model model){
+//        model.addAttribute("categories", categoryService.findAll());
+//    }
 
 }

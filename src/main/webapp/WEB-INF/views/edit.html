@@ -20,7 +20,14 @@
         </tr>
         <tr>
             <td>Category</td>
-            <td><input type="text" th:value="${product.category}" th:field="*{category}"></td>
+            <td>
+
+                <select th:field="*{category}">
+                    <option th:text="${product.category.name}" th:value="${product.category}"></option>
+                    <option th:each="cat:${categories}"
+                            th:text="${cat.getName()}" th:value="${cat.getId()}"></option>
+                </select>
+            </td>
         </tr>
         <tr>
             <td><input type="submit" value="Save"></td>

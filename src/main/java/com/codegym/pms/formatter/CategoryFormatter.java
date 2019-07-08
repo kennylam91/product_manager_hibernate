@@ -12,7 +12,8 @@ import java.util.Locale;
 @Component
 public class CategoryFormatter implements Formatter<Category> {
 
-    public CategoryFormatter() {
+    public CategoryFormatter(CategoryService categoryService) {
+        this.categoryService=categoryService;
     }
 
 

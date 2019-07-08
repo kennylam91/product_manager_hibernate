@@ -66,7 +66,7 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
 
     @Override
     public void addFormatters(FormatterRegistry registry) {
-        registry.addFormatter(new CategoryFormatter());
+        registry.addFormatter(new CategoryFormatter(applicationContext.getBean(CategoryService.class)));
     }
 
     //Thymeleaf Configuration
