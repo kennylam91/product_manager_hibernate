@@ -10,6 +10,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -34,6 +35,8 @@ import java.util.Properties;
 @EnableWebMvc
 @EnableTransactionManagement
 @ComponentScan("com.codegym.pms")
+@EnableJpaRepositories("com.codegym.pms.repository")
+
 public class ApplicationConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
     private ApplicationContext applicationContext;
@@ -43,10 +46,6 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
         this.applicationContext = applicationContext;
     }
 
-    @Bean
-    public ProductRepository productRepository(){
-        return new ProductRepositoryImpl();
-    }
 
     @Bean
     public ProductService productService(){

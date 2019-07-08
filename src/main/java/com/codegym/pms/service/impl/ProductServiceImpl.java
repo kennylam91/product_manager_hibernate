@@ -19,17 +19,17 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> findAll() {
+    public Iterable<Product> findAll() {
         return productRepository.findAll();
     }
 
     @Override
     public Product findById(Long id) {
-        return productRepository.findById(id);
+        return productRepository.findOne(id);
     }
 
     @Override
     public void remove(Long id) {
-        productRepository.remove(id);
+        productRepository.delete(id);
     }
 }
