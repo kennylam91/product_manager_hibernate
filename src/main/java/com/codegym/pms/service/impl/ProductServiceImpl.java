@@ -1,5 +1,6 @@
 package com.codegym.pms.service.impl;
 
+import com.codegym.pms.model.Category;
 import com.codegym.pms.model.Product;
 import com.codegym.pms.repository.ProductRepository;
 import com.codegym.pms.service.ProductService;
@@ -31,5 +32,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void remove(Long id) {
         productRepository.delete(id);
+    }
+
+    @Override
+    public Iterable<Product> findAllByCategory(Category category) {
+        return productRepository.findAllByCategory(category);
     }
 }

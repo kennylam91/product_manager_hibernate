@@ -1,5 +1,6 @@
 package com.codegym.pms.service;
 
+import com.codegym.pms.model.Category;
 import com.codegym.pms.model.Product;
 
 import java.util.List;
@@ -12,4 +13,8 @@ public interface ProductService {
     Product findById(Long id);
 
     void remove(Long id);
+
+    Iterable<Product> findAllByCategory(Category category);
+
+
 }

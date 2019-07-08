@@ -1,6 +1,7 @@
 package com.codegym.pms.service.impl;
 
 import com.codegym.pms.model.Category;
+import com.codegym.pms.model.Product;
 import com.codegym.pms.repository.CategoryRepository;
 import com.codegym.pms.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,4 +29,6 @@ public class CategoryServiceImpl implements CategoryService {
     public void remove(Long id) {
         categoryRepository.delete(id);
     }
+
+
 }

@@ -1,6 +1,7 @@
 package com.codegym.pms.service;
 
 import com.codegym.pms.model.Category;
+import com.codegym.pms.model.Product;
 
 public interface CategoryService {
     void save(Category product);
@@ -10,4 +11,5 @@ public interface CategoryService {
     Category findById(Long id);
 
     void remove(Long id);
+
 }
