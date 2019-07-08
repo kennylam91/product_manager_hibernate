@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/product")
@@ -40,8 +41,14 @@ public class ProductController {
     }
 
     @GetMapping
-    public ModelAndView showList(Pageable pageable) {
-        Page<Product> productList = productService.findAll(pageable);
+    public ModelAndView showList(@RequestParam("productSearch") Optional<String> productSearch, Pageable pageable) {
+        Page<Product> productList;
+        if(productSearch.isPresent()){
+            productList= productService.findAllByNameContaining(productSearch.get(),pageable);
+        }
+        else {
+            productList=productService.findAll(pageable);
+        }
         ModelAndView modelAndView = new ModelAndView("list");
         modelAndView.addObject("productList", productList);
         return modelAndView;

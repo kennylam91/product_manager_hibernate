@@ -19,5 +19,7 @@ public interface ProductService {
 
     Iterable<Product> findAllByCategory(Category category);
 
+    Page<Product> findAllByNameContaining(String name,Pageable pageable);
+
 
 }

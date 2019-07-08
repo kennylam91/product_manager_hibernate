@@ -35,5 +35,13 @@
     <span th:text="${productList.totalPages}"></span>
     <a th:href="@{'/product'(page=${productList.number + 1},size=5)}" th:if="${productList.hasNext()}">Next</a>
 </div>
+
+<div>
+    <form action="">
+        <h3>Search by product:</h3>
+        <input type="text" name="productSearch">
+        <input type="submit" value="Search">
+    </form>
+</div>
 </body>
 </html>
