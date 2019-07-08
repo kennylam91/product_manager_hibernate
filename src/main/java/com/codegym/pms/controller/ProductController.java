@@ -26,6 +26,7 @@ public class ProductController {
     public ModelAndView getCreateForm() {
         ModelAndView modelAndView = new ModelAndView("create");
         modelAndView.addObject("product", new Product());
+        modelAndView.addObject("categories",categoryService.findAll());
         return modelAndView;
     }
 

@@ -21,11 +21,11 @@
         <tr>
             <td>Category</td>
             <td>
-
                 <select th:field="*{category}">
-                    <option th:text="${product.category.name}" th:value="${product.category}"></option>
                     <option th:each="cat:${categories}"
-                            th:text="${cat.getName()}" th:value="${cat.getId()}"></option>
+                            th:text="${cat.name}"
+                            th:value="${cat.id}"
+                            th:selected="(${cat.id}==*{category.id})"></option>
                 </select>
             </td>
         </tr>
