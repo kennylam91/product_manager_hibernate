@@ -39,6 +39,7 @@ public class ProductController {
     public ModelAndView createNewProduct(@Validated @ModelAttribute("product") Product product, BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()) {
             ModelAndView modelAndView = new ModelAndView("create");
+            modelAndView.addObject("categories",categoryService.findAll());
             return modelAndView;
         } else {
             productService.save(product);
