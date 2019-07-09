@@ -1,7 +1,9 @@
 package com.codegym.pms.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
@@ -17,8 +19,9 @@ public class Product {
     @Size(min=5,max=30)
     private String name;
 
-
-    private long price;
+    @NotNull
+    @Min(1000)
+    private Long price;
 
     @ManyToOne
     @JoinColumn(name="category_id")
@@ -27,7 +30,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, long price, Category category) {
+    public Product(String name, Long price, Category category) {
         this.name = name;
         this.price = price;
         this.category = category;
@@ -57,11 +60,11 @@ public class Product {
         this.name = name;
     }
 
-    public long getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 

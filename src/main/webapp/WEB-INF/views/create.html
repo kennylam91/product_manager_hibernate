@@ -17,6 +17,7 @@
         <tr>
             <td>Price</td>
             <td><input th:field="*{price}"/></td>
+            <td th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></td>
         </tr>
         <tr>
             <td>Category</td>
